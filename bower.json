@@ -1,0 +1,19 @@
+{
+  "name": "datatable",
+  "version": "0.0.1",
+  "homepage": "https://github.com/alwint3r/datatable",
+  "authors": [
+    "Alwin Arrasyid <alwin.ridd@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables": "git://github.com/DataTables/DataTables.git#~1.10.7"
+  }
+}
