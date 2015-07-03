@@ -1,6 +1,8 @@
 $(function() {
   $('#subscriptions-table').DataTable({
+    sPaginationType: 'full_numbers',
     bServerSide: true,
+    bProcessing: true,
     bAutoWidth: false,
     sAjaxSource: "http://127.0.0.1:3000/subscriptions",
     aoColumns: [

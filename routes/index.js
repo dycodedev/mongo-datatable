@@ -37,6 +37,7 @@ router.get('/subscriptions', function(req, res, next) {
     for (var i = 0; i < arrayOfColumn.length; i++) {
       if (!!req.query['iSortCol_' + i]) {
         var sortColumn = parseInt(req.query['iSortCol_' + i]);
+        console.log(sortColumn);
         sortColumn = arrayOfColumn[sortColumn];
         var sortDirection = (req.query['sSortDir_' + i] === 'asc')
           ? 1
@@ -61,7 +62,7 @@ router.get('/subscriptions', function(req, res, next) {
     }
     var startPosition = parseInt(req.query.iDisplayStart, 10);
     var displayLength = parseInt(req.query.iDisplayLength, 10);
-    var newdocuments = documents.slice(startPosition, displayLength);
+    var newdocuments = documents.slice(startPosition, displayLength + startPosition);
     response.iTotalRecords = documents.length;
 
     returnToUser(null, newdocuments);
@@ -70,9 +71,8 @@ router.get('/subscriptions', function(req, res, next) {
   function returnToUser(error, documents) {
     if (!error) {
       response.aaData = documents;
-      response.iTotalDisplayRecords = documents.length;
+      response.iTotalDisplayRecords = response.iTotalRecords;
     }
-
     console.log(req.query);
     res.json(response);
   }
