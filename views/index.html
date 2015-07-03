@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href='/'>
+    <title>{{ title }}></title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel='stylesheet' href='datatables/media/css/jquery.dataTables.min.css'> 
+  </head>
+  <body>
+    <script src='jquery/dist/jquery.min.js'></script>
+    <script src='datatables/media/js/jquery.dataTables.min.js'></script>
+
+    <div class='container'>
+      <div class='table-container'>
+        <table id='subscriptions-table' class='table table-condensed'>
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Screen Name</th>
+              <th>Services</th>
+              <th>State</th>
+            </tr>
+          </thead>
+        </table>
+
+        <script>
+          $(function() {
+            $('#subscriptions-table').DataTable({
+              bServerSide: true,
+              sAjaxSource: "http://127.0.0.1:3000/subscriptions",
+              aoColumns: [
+                { 'mData': '_id', 'sTitle': 'Id' },
+                { 'mData': 'subs_name', 'sTitle': 'Name' },
+                { 'mData': 'subs_screen_name', 'sTitle': 'Screen Name' },
+                { 
+                  'mData': 'services', 
+                  'mRender': function (data) {
+                    return data.join(',');
+                  }
+                },
+                { 'mData': 'state'}
+              ]
+            });
+          });
+        </script>
+      </div>
+    </div>
+
+  </body>
+</html>
