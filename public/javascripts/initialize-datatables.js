@@ -1,6 +1,7 @@
 $(function() {
   $('#subscriptions-table').DataTable({
     bServerSide: true,
+    bAutoWidth: false,
     sAjaxSource: "http://127.0.0.1:3000/subscriptions",
     aoColumns: [
       { 'mData': '_id', 'sTitle': 'Id' },

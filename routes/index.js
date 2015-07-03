@@ -5,7 +5,7 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var config = require('../config/dev.local');
 
-router.get('/', function(req, res, next){
+router.get('/', function(req, res, next) {
   res.render('index', { title: 'DataTables with NodeJS & MongoDB' });
 });
 
@@ -46,7 +46,7 @@ router.get('/subscriptions', function(req, res, next) {
         sortObject[sortColumn] = sortDirection;
         processing = processing.sort(sortObject);
 
-        break;
+        console.log(sortObject);
       }
     }
 
