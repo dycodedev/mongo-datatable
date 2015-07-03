@@ -72,12 +72,8 @@ router.get('/subscriptions', function(req, res, next) {
       response.aaData = documents;
       response.iTotalDisplayRecords = documents.length;
     }
-    else {
-      response.iTotalRecords = response.iTotalRecords || 0;
-    }
 
     console.log(req.query);
-    console.log(documents.length);
     res.json(response);
   }
 
