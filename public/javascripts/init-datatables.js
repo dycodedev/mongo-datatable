@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
   $('#zipcodes-table').DataTable({
     serverSide: true,
     processing: true,
@@ -18,4 +18,8 @@ $(function() {
       },
     ]
   });
+
+  $('#zipcodes-table')
+    .removeClass('display')
+    .addClass('table table-stripped table-bordered');
 });
