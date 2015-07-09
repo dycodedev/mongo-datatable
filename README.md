@@ -31,11 +31,11 @@ This function validates the `options` argument and checks the connection to data
 
 * If both individual column and global search value are not given, then the search query will be an empty object. Therefore this function will fetch all documents inside the collection.
 
-* If there is no individual column's search value is given and global search value is given, then the global search value will be used as each column's search value. Then, the search query will be like `{ $or: [{ column_0: value }, ... , column_n: value }] }`.
+* If there is no individual column's search value is given and global search value is given, then the global search value will be used as each column's search value. Then, the search query will be like `{ $or: [{ column_0: value }, ... , { column_n: value }] }`.
 
-* If there is one or more individual column's search value is given and the global search value is not given, then the search query will be like `{ column_0: value, ... , column_n: value }`.
+* If there is one or more individual column's search value is given and the global search value is not given, then the search query will be like `{ column_0: value_0, ... , column_n: value_n }`.
 
-* If both individual column and global search value are given, then the search query will be like `{ column_0: value, column_1: value, $or: [{ column_2 : value }, ... , { column_n: value }`.
+* If both individual column and global search value are given, then the search query will be like `{ column_0: value_0, column_1: value_1, $or: [{ column_2 : value }, ... , { column_n: value }] }`.
 
 Arguments:
 
