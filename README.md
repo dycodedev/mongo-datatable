@@ -1,4 +1,4 @@
-#Mongo DataTable#
+# Mongo DataTable
 
 NodeJS module for server-side processing using jquery datatables and mongodb native driver.
 
@@ -8,26 +8,26 @@ Supports:
 * mongodb >= 2.0 (native driver)
 * MongoDB >= 2.4
 
-##Install##
+## Install
 
 ```bash
 npm install mongo-datatable
 ```
 
-##Documentation##
+## Documentation
 This module returns `MongoDataTable` constructor when loaded using `require('mongo-datatable')`.
 
-###MongoDataTable(db)###
+### MongoDataTable(db)
 
 Argument:
 
 * `db` - An instance of `Db` from `mongodb` module. 
 
-###MongoDataTable.prototype.get(collection, options, callback)###
+### MongoDataTable.prototype.get(collection, options, callback)
 
 This function validates the `options` argument and checks the connection to database. If the `options` is invalid and the connection to database is null, the callback will be called immediately with error. If everything is ok, the callback will be called with `result` containing documents from collection `collection`.
 
-####Search Operation####
+#### Search Operation
 
 * If both individual column and global search value are not given, then the search query will be an empty object. Therefore this function will fetch all documents inside the collection.
 
@@ -43,7 +43,7 @@ Arguments:
 * `options` - An object identic to [sent parameter](https://www.datatables.net/manual/server-side#Sent-parameters) by jquery datatables.
 * `callback(error, result)` - The `result` parameter is an object identic to  [returned data](https://www.datatables.net/manual/server-side#Returned-data) to jquery datatables.
 
-##Usage##
+## Usage
 
 Examples below are using express >= 4.0
 
