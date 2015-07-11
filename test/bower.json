@@ -1,0 +1,23 @@
+{
+  "name": "mongo-datatable-test",
+  "version": "0.1.0",
+  "homepage": "https://github.com/dycodedev/mongo-datatable",
+  "private": true,
+  "authors": [
+    "Alwin Arrasyid <alwin.ridd@gmail.com>"
+  ],
+  "description": "Express-based app for handling jquery datatables server-side processing using mongo-datatable module.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "datatables": "git://github.com/DataTables/DataTables.git#~1.10.7",
+    "bootstrap": "~3.3.5",
+    "Plugins": "git://github.com/DataTables/Plugins.git#~1.10.7"
+  }
+}

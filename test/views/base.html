@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>{{ title }}</title>
+  <link rel='stylesheet' href='bootstrap/dist/css/bootstrap.min.css'>
+  <link rel='stylesheet' href='stylesheets/style.css'>
+  <link rel='stylesheet' href='Plugins/integration/bootstrap/3/dataTables.bootstrap.css'>
+</head>
+<body> 
+  <script src='jquery/dist/jquery.min.js'></script>
+  <script src='bootstrap/dist/js/bootstrap.min.js'></script>
+  <script src='datatables/media/js/jquery.dataTables.min.js'></script>
+  <script src='Plugins/integration/bootstrap/3/dataTables.bootstrap.js'></script>
+  {% block initscripts %}
+  
+  {% endblock %}
+
+  <div class='container'>
+    <div class='table-container'>
+      {% block table %}
+      
+      {% endblock %}
+    </div>
+  </div>
+</body>
+</html>

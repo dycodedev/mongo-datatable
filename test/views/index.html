@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block initscripts %}
+<script src='javascripts/init-zipcodes-datatable.js'></script>
+{% endblock %}
+
+{% block table %}
+<table id='zipcodes-table' class='display'>
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Population</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+</table>
+{% endblock %}
