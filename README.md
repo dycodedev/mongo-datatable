@@ -35,6 +35,11 @@ __Arguments:__
 * `options` - An object identic to [sent parameter](https://www.datatables.net/manual/server-side#Sent-parameters) by jquery datatables.
 * `callback(error, result)` - The `result` parameter is an object identic to  [returned data](https://www.datatables.net/manual/server-side#Returned-data) to jquery datatables.
 
+__Extra Options:__
+
+* `emptyOnError` - If this field is set to `true` and `callback` is called with `error`, the `result` won't be null, but instead it will contain [returned data](https://www.datatables.net/manual/server-side#Returned-data) with `data` property set to an empty array. The default value is `true`.
+* `showAlert` - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`. If the `emptyOnError` is set to false, this field will be ignored.
+
 #### Search Operation
 
 * If both individual column and global search value are not given, then the search query will be an empty object. Therefore this method will fetch all documents inside the collection.
@@ -60,8 +65,11 @@ var MongoClient = mongodb.MongoClient;
 var router = express.Router();
 
 router.get('/data.json', function(req, res, next) {
+  var options = req.query;
+  options.showAlert = true;
+  
   MongoClient.connect('mongodb://localhost/database', function(err, db) {
-    new MongoDataTable(db).get('collection', req.query, function(err, result) {
+    new MongoDataTable(db).get('collection', options, function(err, result) {
       res.json(result);
     });
   });
@@ -80,6 +88,8 @@ var Server = mongodb.Server;
 var router = express.Router();
 
 router.get('/data.json', function(req, res, next) {
+  var options = req.query;
+  options.showAlert = true;
   var db = new Db('database', new Server('localhost', 27017));
   
   db.open(function(error, db) {
