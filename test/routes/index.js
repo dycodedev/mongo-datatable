@@ -25,8 +25,6 @@ router.get('/zipcodes.json', function(req, res) {
         console.error(err);
       }
 
-      console.log(options);
-
       res.json(result);
     });
   });
