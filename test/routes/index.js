@@ -12,26 +12,20 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/zipcodes.json', function(req, res) { 
-  var emptyResponse = {
-    draw: 0,
-    totalRecords: 0,
-    totalRecordsFitlered: 0,
-    data: []
-  };
+  var options = req.query;
+  options.showAlert = true;
 
   MongoClient.connect(config.mongodb.connectionUri, function(err, db) {
     if (err) {
       console.error(err);
-      res.json(emptyResponse);
-      return;
     }
 
-    new MongoDataTable(db).get('zipcodes', req.query, function(err, result) {
+    new MongoDataTable(db).get('zipcodes', options, function(err, result) {
       if (err) {
         console.error(err);
-        res.json(emptyResponse);
-        return;
       }
+
+      console.log(options);
 
       res.json(result);
     });
