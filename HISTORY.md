@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [Unreleased]
+
+#### Changed
+* Revised README.md
+
+#### Fixed
+* Treat numeric search value differently.
+
 ### [0.2.0] - 2015-07-13
 
 #### Added
@@ -35,6 +43,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
+[Unreleased]: https://github.com/dycodedev/mongo-datatable/compare/0.2.0...release-5
 [0.2.0]: https://github.com/dycodedev/mongo-datatable/compare/0.1.2...0.2.0
 [0.1.2]: https://github.com/dycodedev/mongo-datatable/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/dycodedev/mongo-datatable/compare/0.1.0...0.1.1
