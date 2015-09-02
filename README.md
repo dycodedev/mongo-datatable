@@ -23,7 +23,7 @@ This constructor takes one argument and must be instantiated using `new` keyword
 
 __Argument:__
 
-* `db` - An instance of `Db` from `mongodb` module. 
+* `db` - An instance of `Db` from `mongodb` module.
 
 ### MongoDataTable.prototype.get(collection, options, callback)
 
@@ -67,7 +67,7 @@ var router = express.Router();
 router.get('/data.json', function(req, res, next) {
   var options = req.query;
   options.showAlert = true;
-  
+
   MongoClient.connect('mongodb://localhost/database', function(err, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
       res.json(result);
@@ -91,9 +91,9 @@ router.get('/data.json', function(req, res, next) {
   var options = req.query;
   options.showAlert = true;
   var db = new Db('database', new Server('localhost', 27017));
-  
+
   db.open(function(error, db) {
-    new MongoDataTable(db).get('collection', req.query, function(err, result) {
+    new MongoDataTable(db).get('collection', options, function(err, result) {
       res.json(result);
     });
   });
