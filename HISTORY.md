@@ -43,7 +43,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
-[Unreleased]: https://github.com/dycodedev/mongo-datatable/compare/0.2.0...release-5
+[0.2.1]: https://github.com/dycodedev/mongo-datatable/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/dycodedev/mongo-datatable/compare/0.1.2...0.2.0
 [0.1.2]: https://github.com/dycodedev/mongo-datatable/compare/0.1.1...0.1.2
 [0.1.1]: https://github.com/dycodedev/mongo-datatable/compare/0.1.0...0.1.1
