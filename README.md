@@ -37,8 +37,8 @@ __Arguments:__
 
 __Extra Options:__
 
-* `emptyOnError` - If this field is set to `true` and `callback` is called with `error`, the `result` won't be null, but instead it will contain [returned data](https://www.datatables.net/manual/server-side#Returned-data) with `data` property set to an empty array. The default value is `true`.
-* `showAlert` - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`. If the `emptyOnError` is set to false, this field will be ignored.
+* `showAlertOnError (Boolean)` - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`.
+* `customQuery (Object)` - Add custom query. Suppose you have a user collection with each user has either admin or user role and you want to display only users with admin role. You can add something like `{ role: 'admin' }` to this field. This query has higher precedence over constructed query.
 
 #### Search Operation
 
