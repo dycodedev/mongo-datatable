@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/zipcodes.json', function(req, res) {
   var options = req.query;
-  options.showAlert = true;
+  options.showAlertOnError = true;
 
   // Select data with state MA and city name that starts with B and population less than 2000
   options.customQuery = {

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var swig = require('swig');
+var http = require('http');
 
 var indexRoutes = require('./routes/index');
 var subsRoutes = require('./routes/subs');
@@ -66,4 +67,15 @@ app.use(function(err, req, res, next) {
 });
 
 
-module.exports = app;
+var server = http.createServer(app);
+var port = process.env.PORT || 3000;
+
+server.listen(port);
+
+server.on('listening', function() {
+  console.log('MongoDataTable Test Server is running on port', port);
+})
+
+process.on('uncaughtException', function(exception) {
+  console.error('uncaughtException', exception);
+});

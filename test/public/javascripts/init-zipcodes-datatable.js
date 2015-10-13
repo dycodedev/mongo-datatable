@@ -10,11 +10,11 @@ $(document).ready(function() {
     autoWidth: false,
     ajax: 'zipcodes.json',
     columns: [
-      { data: '_id' },
+      { data: '_id', searchable: false },
       { data: 'city' },
       { data: 'state' },
       { data: 'pop' },
-      { 
+      {
         data: 'loc',
         render: function(data) {
           return data.join(', ');
