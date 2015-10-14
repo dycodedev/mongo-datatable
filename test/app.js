@@ -77,5 +77,5 @@ server.on('listening', function() {
 })
 
 process.on('uncaughtException', function(exception) {
-  console.error('uncaughtException', exception);
+  console.error('uncaughtException', exception.stack);
 });
