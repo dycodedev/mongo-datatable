@@ -53,6 +53,8 @@ __Extra Options:__
 __There's More:__
 You can search data in a specific column using global search input element with `column_name:value` format. This will be useful if you want to search data in a specific column or field but you don't want to display search input element for that column.
 
+Note that this will work only if you specify `name` in `columns` configuration. See [columns.name configuration](https://datatables.net/reference/option/columns.name).
+
 
 ## Usage
 
