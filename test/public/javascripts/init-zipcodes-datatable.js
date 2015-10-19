@@ -10,12 +10,13 @@ $(document).ready(function() {
     autoWidth: false,
     ajax: 'zipcodes.json',
     columns: [
-      { data: '_id', searchable: false },
-      { data: 'city' },
-      { data: 'state' },
-      { data: 'pop' },
+      { data: '_id', searchable: false, name: 'id' },
+      { data: 'city', name: 'city' },
+      { data: 'state', name: 'state' },
+      { data: 'pop', name: 'population'},
       {
         data: 'loc',
+        name: 'location',
         render: function(data) {
           return data.join(', ');
         }
