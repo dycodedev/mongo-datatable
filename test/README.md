@@ -21,3 +21,11 @@ You can omit `--username` and `--password` if you don't  have any user, and you 
 Note that you must be in the same directory as `zips.json` file to run the above command, otherwise you should move to directory where `zips.json` file lies or specify either absolute or relative path to that file.
 
 You can find more detail about importing data to mongodb in [here](http://docs.mongodb.org/manual/reference/program/mongoimport/)
+
+## Running the app
+
+Using port number 8000 or any available port numbers.
+
+```bash
+PORT=8000 node app.js
+```

@@ -11,9 +11,14 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'MongoDB Datatable' });
 });
 
-router.get('/zipcodes.json', function(req, res) { 
+router.get('/zipcodes.json', function(req, res) {
   var options = req.query;
-  options.showAlert = true;
+  options.showAlertOnError = true;
+
+  // Select data with state MA
+  options.customQuery = {
+    state: 'MA',
+  };
 
   MongoClient.connect(config.mongodb.connectionUri, function(err, db) {
     if (err) {

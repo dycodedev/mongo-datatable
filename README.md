@@ -15,7 +15,7 @@ npm install mongo-datatable
 ```
 
 ## Documentation
-This module returns `MongoDataTable` constructor when loaded using `require('mongo-datatable')`.
+This module returns `MongoDataTable` constructor when loaded using `require`.
 
 ### MongoDataTable(db)
 
@@ -31,14 +31,14 @@ This method validates the `options` argument and checks the connection to databa
 
 __Arguments:__
 
-* `collection` - A string represents name of a collection in your database.
-* `options` - An object identic to [sent parameter](https://www.datatables.net/manual/server-side#Sent-parameters) by jquery datatables.
-* `callback(error, result)` - The `result` parameter is an object identic to  [returned data](https://www.datatables.net/manual/server-side#Returned-data) to jquery datatables.
+* `collection` (*String*) - A string represents name of a collection in your database.
+* `options` (*Object*) - An object identic to [sent parameter](https://www.datatables.net/manual/server-side#Sent-parameters) by jquery datatables.
+* `callback(error, result)` (*Function*) - The `result` parameter is an object identic to  [returned data](https://www.datatables.net/manual/server-side#Returned-data) to jquery datatables.
 
 __Extra Options:__
 
-* `emptyOnError` - If this field is set to `true` and `callback` is called with `error`, the `result` won't be null, but instead it will contain [returned data](https://www.datatables.net/manual/server-side#Returned-data) with `data` property set to an empty array. The default value is `true`.
-* `showAlert` - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`. If the `emptyOnError` is set to false, this field will be ignored.
+* `showAlertOnError` (*Boolean*) - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`.
+* `customQuery` (*Object*) - Add custom query. Suppose you have a user collection with each user has either admin or user role and you want to display only users with admin role. You can add something like `{ role: 'admin' }` to this field. This query has higher precedence over constructed query.
 
 #### Search Operation
 
@@ -49,6 +49,11 @@ __Extra Options:__
 * If there is one or more individual column search value is given and the global search value is not given, then the search query will be like `{ column_0: value_0, ... , column_n: value_n }`.
 
 * If both individual column and global search value are given, then the search query will be like `{ column_0: value_0, column_1: value_1, $or: [{ column_2 : value }, ... , { column_n: value }] }`.
+
+__There's More:__
+You can search data in a specific column using global search input element with `column_name:value` format. This will be useful if you want to search data in a specific column or field but you don't want to display search input element for that column.
+
+Note that this will work only if you specify `name` in `columns` configuration. See [columns.name configuration](https://datatables.net/reference/option/columns.name).
 
 
 ## Usage
@@ -66,7 +71,10 @@ var router = express.Router();
 
 router.get('/data.json', function(req, res, next) {
   var options = req.query;
-  options.showAlert = true;
+  options.showAlertOnError = true;
+  options.customQuery = {
+    role: 'user'
+  };
 
   MongoClient.connect('mongodb://localhost/database', function(err, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
@@ -89,8 +97,12 @@ var router = express.Router();
 
 router.get('/data.json', function(req, res, next) {
   var options = req.query;
-  options.showAlert = true;
   var db = new Db('database', new Server('localhost', 27017));
+
+  options.showAlertOnError = true;
+  options.customQuery = {
+    role: 'user'
+  };
 
   db.open(function(error, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
