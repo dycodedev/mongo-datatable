@@ -1,6 +1,6 @@
 {
   "name": "mongo-datatable",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "NodeJS module for server-side processing using jquery datatables and mongodb native driver.",
   "repository": {
     "type": "git",
