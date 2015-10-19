@@ -15,11 +15,9 @@ router.get('/zipcodes.json', function(req, res) {
   var options = req.query;
   options.showAlertOnError = true;
 
-  // Select data with state MA and city name that starts with B and population less than 2000
+  // Select data with state MA
   options.customQuery = {
     state: 'MA',
-    city: /^B/,
-    pop: { $lt: 2000 }
   };
 
   MongoClient.connect(config.mongodb.connectionUri, function(err, db) {
