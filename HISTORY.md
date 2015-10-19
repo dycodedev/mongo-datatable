@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+
+### [Unreleased]
+
+#### Added
+* `customQuery` option.
+* Specific column search in global search value.
+
+#### Changed
+* `showAlert` option changed to `showAlertOnError`.
+* Using lodash to process request data.
+* Express-based example app is no longer using `bin/www` to start app.
+* Express-based example app uses newly added feature.
+
+#### Removed
+* `emptyOnError` option as this module will always return empty data when error occurs.
+
 ### [0.2.1] - 2015-09-05
 
 #### Changed
@@ -42,7 +58,7 @@ All notable changes to this project will be documented in this file. This projec
 * Columns sorting
 * Options validation
 * Non alphanumeric string replacement
-
+[Unreleased]: https://github.com/dycodedev/mongo-datatable/compare/0.2.1...release-6
 [0.2.1]: https://github.com/dycodedev/mongo-datatable/compare/0.2.0...0.2.1
 [0.2.0]: https://github.com/dycodedev/mongo-datatable/compare/0.1.2...0.2.0
 [0.1.2]: https://github.com/dycodedev/mongo-datatable/compare/0.1.1...0.1.2
