@@ -7,7 +7,7 @@ All notable changes to this project will be documented in this file. This projec
 
 #### Added
 * `customQuery` option.
-* Specific column search in global search value.
+* Specific column search in global search input element.
 
 #### Changed
 * `showAlert` option changed to `showAlertOnError`.
