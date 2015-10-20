@@ -14,7 +14,6 @@ router.get('/', function(req, res, next) {
 router.get('/zipcodes.json', function(req, res) {
   var options = req.query;
   options.showAlertOnError = true;
-
   // Select data with state MA
   options.customQuery = {
     state: 'MA',
@@ -25,7 +24,7 @@ router.get('/zipcodes.json', function(req, res) {
       console.error(err);
     }
 
-    new MongoDataTable(db).get('zipcodes', options, function(err, result) {
+    new MongoDataTable(null).get('zipcodes', options, function(err, result) {
       if (err) {
         console.error(err);
       }
