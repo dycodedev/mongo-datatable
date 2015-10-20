@@ -8,6 +8,7 @@ $(document).ready(function() {
     serverSide: true,
     processing: true,
     autoWidth: false,
+    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, 'All']],
     ajax: 'zipcodes.json',
     columns: [
       { data: '_id', searchable: false, name: 'id' },

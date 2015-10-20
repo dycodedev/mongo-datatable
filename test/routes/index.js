@@ -24,7 +24,7 @@ router.get('/zipcodes.json', function(req, res) {
       console.error(err);
     }
 
-    new MongoDataTable(null).get('zipcodes', options, function(err, result) {
+    new MongoDataTable(db).get('zipcodes', options, function(err, result) {
       if (err) {
         console.error(err);
       }
