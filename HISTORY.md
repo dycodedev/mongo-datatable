@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [0.4.1] - 2016-06-25
+
+#### Modified
+* Upgrade lodash to version 4.13.1. (See [#2](https://github.com/dycodedev/mongo-datatable/pull/2))
+
 ### [0.4.0] - 2015-10-20
 
 #### Added
@@ -69,6 +74,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
+[0.4.1]: https://github.com/dycodedev/mongo-datatable/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/dycodedev/mongo-datatable/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/dycodedev/mongo-datatable/compare/0.3.0...0.3.1
 [0.3.0]: https://github.com/dycodedev/mongo-datatable/compare/0.2.1...0.3.0
