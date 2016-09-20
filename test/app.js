@@ -8,7 +8,6 @@ var swig = require('swig');
 var http = require('http');
 
 var indexRoutes = require('./routes/index');
-var subsRoutes = require('./routes/subs');
 
 var app = express();
 
@@ -33,7 +32,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
 app.use('/', indexRoutes);
-app.use('/subs', subsRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
