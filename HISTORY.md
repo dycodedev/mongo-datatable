@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.0.0] - 2016-09-20
+
+#### Modified
+* Refactored validator and entry point.
+* Only generate search query once.
+
 ### [0.4.1] - 2016-06-25
 
 #### Modified
@@ -74,6 +80,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
+[1.0.0]: https://github.com/dycodedev/mongo-datatable/compare/0.4.1...1.0.0
 [0.4.1]: https://github.com/dycodedev/mongo-datatable/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/dycodedev/mongo-datatable/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/dycodedev/mongo-datatable/compare/0.3.0...0.3.1
