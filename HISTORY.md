@@ -2,6 +2,11 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.0.1] - 2016-09-20
+
+#### Modified
+* Fixed left curly braces
+
 ### [1.0.0] - 2016-09-20
 
 #### Modified
@@ -80,6 +85,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
+[1.0.1]: https://github.com/dycodedev/mongo-datatable/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/dycodedev/mongo-datatable/compare/0.4.1...1.0.0
 [0.4.1]: https://github.com/dycodedev/mongo-datatable/compare/0.4.0...0.4.1
 [0.4.0]: https://github.com/dycodedev/mongo-datatable/compare/0.3.1...0.4.0
