@@ -16,7 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "datatables": "git://github.com/DataTables/DataTables.git#~1.10.7",
+    "datatables": "^1.10.16",
     "bootstrap": "~3.3.5",
     "Plugins": "git://github.com/DataTables/Plugins.git#~1.10.7"
   }

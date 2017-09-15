@@ -39,6 +39,7 @@ __Extra Options:__
 
 * `showAlertOnError` (*Boolean*) - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`.
 * `customQuery` (*Object*) - Add custom query. Suppose you have a user collection with each user has either admin or user role and you want to display only users with admin role. You can add something like `{ role: 'admin' }` to this field. This query has higher precedence over constructed query.
+* `caseInsensitiveSearch` (*Boolean*) - To enable case insensitive search, set this option value to `true`. It is case sensitive by default.
 
 #### Search Operation
 
@@ -76,6 +77,9 @@ router.get('/data.json', function(req, res, next) {
     role: 'user'
   };
 
+  // uncomment the line below to enable case insensitive search
+  // options.caseInsensitiveSearch = true;
+
   MongoClient.connect('mongodb://localhost/database', function(err, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
       res.json(result);
@@ -103,6 +107,9 @@ router.get('/data.json', function(req, res, next) {
   options.customQuery = {
     role: 'user'
   };
+
+  // uncomment the line below to enable case insensitive search
+  // options.caseInsensitiveSearch = true;
 
   db.open(function(error, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {

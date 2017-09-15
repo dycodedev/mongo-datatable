@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/zipcodes.json', function(req, res) {
   var options = req.query;
+  options.caseInsensitiveSearch = true;
   options.showAlertOnError = true;
   // Select data with state MA
   options.customQuery = {
