@@ -1,12 +1,12 @@
 # Mongo DataTable
 
-NodeJS module for server-side processing using jquery datatables and mongodb native driver.
+Node.js module for server-side processing using jQuery datatables and MongoDB native driver.
 
 Supports:
 
-* datatables >= 1.10
-* mongodb >= 2.0 (native driver)
-* MongoDB >= 2.4
+* jQuery Datatables v1.10
+* mongodb native driver v2.0 and later
+* MongoDB database server v2.4 and later
 
 ## Install
 
@@ -59,7 +59,7 @@ Note that this will work only if you specify `name` in `columns` configuration. 
 
 ## Usage
 
-Examples below are using express >= 4.0
+These examples assume that you are using Express v4
 
 * Using `MongoClient`
 
@@ -73,6 +73,48 @@ var router = express.Router();
 router.get('/data.json', function(req, res, next) {
   var options = req.query;
   options.showAlertOnError = true;
+
+  /**
+   * Using customQuery for specific needs such as
+   * filtering data which has `role` property set to user
+   */
+  options.customQuery = {
+    role: 'user'
+  };
+
+  /* uncomment the line below to enable case insensitive search */
+  // options.caseInsensitiveSearch = true;
+
+  MongoClient.connect('mongodb://localhost/database', function(err, db) {
+    new MongoDataTable(db).get('collection', options, function(err, result) {
+      if (err) {
+        // handle the error
+      }
+
+      res.json(result);
+    });
+  });
+});
+...
+```
+
+* With MongoDB native driver v3
+
+```js
+var express = require('express');
+var mongodb = require('mongodb');
+var MongoDataTable = require('mongo-datatable');
+var MongoClient = mongodb.MongoClient;
+var router = express.Router();
+
+router.get('/data.json', function(req, res, next) {
+  var options = req.query;
+  options.showAlertOnError = true;
+
+  /**
+   * Using customQuery for specific needs such as
+   * filtering data which has `role` property set to user
+   */
   options.customQuery = {
     role: 'user'
   };
@@ -80,8 +122,20 @@ router.get('/data.json', function(req, res, next) {
   // uncomment the line below to enable case insensitive search
   // options.caseInsensitiveSearch = true;
 
-  MongoClient.connect('mongodb://localhost/database', function(err, db) {
+
+   /**
+    * MongoDB native driver v3, MongoClient.connect no longer yields instance of Db.
+    * It yields the instance of MongoClient instead.
+    * To get Db instance, you can call `db` method of client with the database name as the argument
+    */
+  
+  MongoClient.connect('mongodb://localhost/database', function(err, client) {
+    var db = client.db('database');
     new MongoDataTable(db).get('collection', options, function(err, result) {
+      if (err) {
+        // handle the error
+      }
+
       res.json(result);
     });
   });
@@ -104,6 +158,11 @@ router.get('/data.json', function(req, res, next) {
   var db = new Db('database', new Server('localhost', 27017));
 
   options.showAlertOnError = true;
+
+  /**
+   * Using customQuery for specific needs such as
+   * filtering data which has `role` property set to user
+   */
   options.customQuery = {
     role: 'user'
   };
@@ -113,6 +172,10 @@ router.get('/data.json', function(req, res, next) {
 
   db.open(function(error, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
+      if (err) {
+        // handle the error
+      }
+
       res.json(result);
     });
   });
