@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.1.1] - 2018-05-20
+
+#### Added
+* Example for mongodb native driver v3
+
+#### Modified
+* Internal naming of reference to `async` module so that it would not conflict with `async` keyword.
+* Using strict mode in MongoDataTable.js
+* Updated lodash version
+
 ### [1.1.0] - 2017-09-15
 
 #### Added
@@ -90,6 +100,7 @@ All notable changes to this project will be documented in this file. This projec
 * Options validation
 * Non alphanumeric string replacement
 
+[1.1.1]: https://github.com/dycodedev/mongo-datatable/compare/1.1.0...1.1.1
 [1.1.0]: https://github.com/dycodedev/mongo-datatable/compare/1.0.1...1.1.0
 [1.0.1]: https://github.com/dycodedev/mongo-datatable/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/dycodedev/mongo-datatable/compare/0.4.1...1.0.0
