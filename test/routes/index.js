@@ -20,10 +20,13 @@ router.get('/zipcodes.json', function(req, res) {
     state: 'MA',
   };
 
-  MongoClient.connect(config.mongodb.connectionUri, function(err, db) {
+  MongoClient.connect(config.mongodb.connectionUri, function(err, client) {
     if (err) {
       console.error(err);
     }
+
+    var dbname = config.mongodb.dbname;
+    var db = client.db(dbname);
 
     new MongoDataTable(db).get('zipcodes', options, function(err, result) {
       if (err) {
