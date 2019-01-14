@@ -39,6 +39,7 @@ __Extra Options:__
 
 * `showAlertOnError` (*Boolean*) - If this field is set to `true` and `callback` is called with `error`, the error message will be displayed to the user by the datatables. The default value is `false`.
 * `customQuery` (*Object*) - Add custom query. Suppose you have a user collection with each user has either admin or user role and you want to display only users with admin role. You can add something like `{ role: 'admin' }` to this field. This query has higher precedence over constructed query.
+* `aggregateQuery` (*Array*) - Run custom aggregate query (pipeline). Be sure to manually select which data fields will be returned using projection stage and name those fields according to jquery datatable column names. Filtering (comming from front-end jquery datatable), sorting, and pagination will be automatically executed as final stages of the aggregate pipeline.
 * `caseInsensitiveSearch` (*Boolean*) - To enable case insensitive search, set this option value to `true`. It is case sensitive by default.
 
 #### Search Operation
@@ -176,6 +177,40 @@ router.get('/data.json', function(req, res, next) {
         // handle the error
       }
 
+      res.json(result);
+    });
+  });
+});
+...
+```
+
+* Using custom `aggregateQuery` option. Front-end jquery datatable has two columns: `role` and `count`
+
+```js
+var express = require('express');
+var mongodb = require('mongodb');
+var MongoDataTable = require('mongo-datatable');
+var MongoClient = mongodb.MongoClient;
+var router = express.Router();
+
+router.get('/data.json', function(req, res, next) {
+  var options = req.query; //query comming from front-end jquery datatable
+  options.showAlertOnError = true;
+  
+  options.aggregateQuery = [
+    {$group: {
+      _id: '$role',
+      role: {$last: '$role'}
+      count: {$sum: '1'}
+    }},
+    {$project: { 
+      role: 1,
+      count: 1
+    }}
+  ];
+
+  MongoClient.connect('mongodb://localhost/database', function(err, db) {
+    new MongoDataTable(db).get('collection', options, function(err, result) {
       res.json(result);
     });
   });
