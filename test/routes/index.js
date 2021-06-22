@@ -20,7 +20,12 @@ router.get('/zipcodes.json', function(req, res) {
     state: 'MA',
   };
 
-  MongoClient.connect(config.mongodb.connectionUri, function(err, client) {
+  let optCon = {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+  }
+
+  MongoClient.connect(config.mongodb.connectionUri, optCon, function(err, client) {
     if (err) {
       console.error(err);
     }
