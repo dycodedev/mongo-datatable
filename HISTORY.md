@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org/).
 
+### [1.1.1] - 2021-03-15
+
+#### Added
+* Example for mongodb native driver v3.6
+* pass option { useUnifiedTopology: true } to the MongoClient constructor
+
+#### Modified
+* Updated lodash version
+* Updated mongodb version
+
+
 ### [1.1.1] - 2018-05-20
 
 #### Added

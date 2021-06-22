@@ -85,7 +85,14 @@ router.get('/data.json', function(req, res, next) {
   /* uncomment the line below to enable case insensitive search */
   // options.caseInsensitiveSearch = true;
 
-  MongoClient.connect('mongodb://localhost/database', function(err, db) {
+  /**
+   * MongoDB server Server Discovery and Monitoring engine is deprecated
+   * To use the new Server Discover and Monitoring engine, pass option { useUnifiedTopology: true } to the MongoClient constructor.
+   * You still
+   */
+  let opt_connect = { useUnifiedTopology: true }
+
+  MongoClient.connect('mongodb://localhost/database', opt_connect, function(err, db) {
     new MongoDataTable(db).get('collection', options, function(err, result) {
       if (err) {
         // handle the error
@@ -128,8 +135,7 @@ router.get('/data.json', function(req, res, next) {
     * It yields the instance of MongoClient instead.
     * To get Db instance, you can call `db` method of client with the database name as the argument
     */
-  
-  MongoClient.connect('mongodb://localhost/database', function(err, client) {
+
     var db = client.db('database');
     new MongoDataTable(db).get('collection', options, function(err, result) {
       if (err) {

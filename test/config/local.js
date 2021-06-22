@@ -6,7 +6,7 @@ module.exports = {
     username: '',
     password: '',
     get connectionUri() {
-      return 'mongodb://' + this.host + ':' + this.port + '/' + this.dbname;
+        return `mongodb://${this.username}:${this.password}@${this.host}:${this.port}`;
     }
   }
 }
